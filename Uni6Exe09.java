@@ -1,89 +1,82 @@
 import java.util.Scanner;
+//DESAFIO//
+/**
+ * Uni6Exe09.java - Um cinema pretende fazer uma pesquisa para avaliar o grau de satisfação de seus clientes. 
+ * Trinta deles foram ouvidos e para cada um perguntou-se o sexo (1=feminino 2=masculino), 
+ * uma nota para o cinema (zero até dez, valor inteiro) e a idade.
+
+Baseado nisto faça um programa que informe:
+
+qual a nota média recebida pelo cinema;
+qual a nota média atribuída pelos homens;
+qual a nota atribuída pela mulher mais jovem;
+quantas das mulheres com mais de 50 anos deram nota superior a média recebida pelo cinema.
+Utilize os conceitos aprendidos sobre vetores (ou mesmo o uso de matriz) e métodos para a resolução deste exercício.
+ */
 
 public class Uni6Exe09 {
 
-    static final int TOTAL_PESSOAS = 30;
-
-    public static void lerDados(int[] sexo, int[] nota, int[] idade) {
-        Scanner scanner = new Scanner(System.in);
-
-        for (int i = 0; i < TOTAL_PESSOAS; i++) {
-            System.out.println("\nPessoa " + (i + 1) + ":");
-
-            do {
-                System.out.print("Sexo (1=feminino, 2=masculino): ");
-                sexo[i] = scanner.nextInt();
-            } while (sexo[i] != 1 && sexo[i] != 2);
-
-            do {
-                System.out.print("Nota (0 a 10): ");
-                nota[i] = scanner.nextInt();
-            } while (nota[i] < 0 || nota[i] > 10);
-
-            do {
-                System.out.print("Idade: ");
-                idade[i] = scanner.nextInt();
-            } while (idade[i] <= 0);
-        }
-    }
-    public static double calcularMediaGeral(int[] nota) {
-        int soma = 0;
-        for (int n : nota) {
-            soma += n;
-        }
-        return (double) soma / TOTAL_PESSOAS;
-    }
-
-    public static double mediaHomens(int[] sexo, int[] nota) {
-        int soma = 0;
-        int qtd = 0;
-        for (int i = 0; i < TOTAL_PESSOAS; i++) {
-            if (sexo[i] == 2) {
-                soma += nota[i];
-                qtd++;
-            }
-        }
-        return qtd > 0 ? (double) soma / qtd : 0;
-    }
-
-    public static int notaMulherMaisJovem(int[] sexo, int[] nota, int[] idade) {
-        int menorIdade = Integer.MAX_VALUE;
-        int notaMaisJovem = -1;
-
-        for (int i = 0; i < TOTAL_PESSOAS; i++) {
-            if (sexo[i] == 1 && idade[i] < menorIdade) {
-                menorIdade = idade[i];
-                notaMaisJovem = nota[i];
-            }
-        }
-        return notaMaisJovem;
-    }
-
-    public static int mulheresAcima50NotaAlta(int[] sexo, int[] nota, int[] idade, double mediaGeral) {
-        int cont = 0;
-        for (int i = 0; i < TOTAL_PESSOAS; i++) {
-            if (sexo[i] == 1 && idade[i] > 50 && nota[i] > mediaGeral) {
-                cont++;
-            }
-        }
-        return cont;
-    }
     public static void main(String[] args) {
-        int[] sexo = new int[TOTAL_PESSOAS];
-        int[] nota = new int[TOTAL_PESSOAS];
-        int[] idade = new int[TOTAL_PESSOAS];
+        // [sexo][nota][idade]
+        // [1][10][55]
+        // [1][8][23]
+        // [1][10][18]
+        // [2][5][30]
+        // [2][6][18]
+        int qtdClientes = 5; // 5 clientes [5][ ]
+        int qtdRespostas = 3; // 3 respostas [ ][3] -> sexo, nota e idade
+        int dados[][] = new int[qtdClientes][qtdRespostas];
 
-        lerDados(sexo, nota, idade);
+        // Faz a leitura dos dados.
+        Scanner teclado = new Scanner(System.in);
 
-        double mediaGeral = calcularMediaGeral(nota);
-        double mediaHomens = mediaHomens(sexo, nota);
-        int notaMaisJovem = notaMulherMaisJovem(sexo, nota, idade);
-        int mulheresAcima50 = mulheresAcima50NotaAlta(sexo, nota, idade, mediaGeral);
+        for (int i = 0; i < dados.length; i++) {
+            System.out.println(" _ Informe os dados para o cliente [" + (i + 1) + "]");
+            System.out.println("sexo (1=feminino 2=masculino): ");
+            dados[i][0] = teclado.nextInt();
+            System.out.println("nota para o cinema (zero até dez): ");
+            dados[i][1] = teclado.nextInt();
+            System.out.println("idade: ");
+            dados[i][2] = teclado.nextInt();
+        }
 
-        System.out.printf("\nNota média geral: %.2f\n", mediaGeral);
-        System.out.printf("Nota média dos homens: %.2f\n", mediaHomens);
-        System.out.printf("Nota da mulher mais jovem: %d\n", notaMaisJovem);
-        System.out.printf("Mulheres com mais de 50 anos que deram nota acima da média: %d\n", mulheresAcima50);
+        teclado.close();
+
+        // Faz os cálculos e apresentação das informações necessárias.
+        int clientesSomaNota = 0;
+        int homemSomaNota = 0;
+        int homemQtd = 0;
+        int mulherJovemId = -1;
+        int mulherJovemIdade = 999;
+
+        for (int cliente = 0; cliente < qtdClientes; cliente++) {
+            clientesSomaNota += dados[cliente][1];
+            if (dados[cliente][0] == 2) { // homem
+                homemSomaNota += dados[cliente][1];
+                homemQtd++;
+            }
+            if (dados[cliente][0] == 1) { // mulher
+                if (dados[cliente][2] < mulherJovemIdade) {
+                    mulherJovemIdade = dados[cliente][2];
+                    mulherJovemId = cliente;
+                }
+            }
+        }
+
+        double notaMedia = (double) clientesSomaNota / qtdClientes;
+        System.out.println("Nota média recebida pelo cinema: " + notaMedia);
+        double notaMediaHomem = (double) homemSomaNota / homemQtd;
+        System.out.println("Nota média atribuída pelos homens: " + notaMediaHomem);
+        System.out.println("Nota atribuída pela mulher mais jovem: " + dados[mulherJovemId][1]);
+
+        int qtdMulherMedia = 0;
+        for (int cliente = 0; cliente < qtdClientes; cliente++) {
+            if (dados[cliente][2] > 50) { // mulher, idade > 50
+                if (dados[cliente][1] > notaMedia) {
+                    qtdMulherMedia++;
+                }
+            }
+        }
+        System.out.println("Quantidade de mulheres com mais de 50 anos deram nota superior a média: " + qtdMulherMedia);
     }
 }
-

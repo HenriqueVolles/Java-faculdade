@@ -1,179 +1,172 @@
+
 import java.util.Scanner;
+//DESAFIO//
+/**
+ * Uni6Exe10.java - Dado um vetor de números inteiros, com capacidade limitada a 50 elementos, 
+ * faça um programa que construa um menu com as seguintes opções:
 
+“1 – Incluir valor”: nesta opção inclua o valor no fim do vetor, se houver espaço. Informe o usuário se o valor foi incluído no vetor ou não;
+“2 – Pesquisar valor”: nesta opção leia um valor e informe se o mesmo está no vetor;
+“3 – Alterar valor”: nesta opção informe um número a ser alterado e um novo número a ser colocado no lugar (só para a primeira ocorrência deste número). Caso o número a ser alterado exista no vetor, substitua-o pelo novo número. Caso contrário, informe “número não encontrado”;
+“4 – Excluir valor”: nesta opção leia um valor e, caso ele esteja no vetor, exclua-o. Informe o usuário se o valor foi excluído do vetor ou não. A posição que foi excluída o valor deve ser preenchida pelo valor seguinte, sucessivamente até o final dos valores do vetor;
+“5 – Mostrar valores”: nesta opção mostre todos os valores armazenados no vetor;
+“6 – Ordenar valores”: ordene todos os valores do vetor em ordem crescente;
+“7 – Inverter valores”: desafio (ver abaixo);
+“8 – Sair do sistema”: nesta opção deve ser finalizada a execução do programa.
+OBSERVAÇÃO: Não utilize o Arrays.sort
+
+Faça um método para cada uma das opções do menu. O menu deve-se repetir até que o usuário escolha a opção 8.
+Para a opção "6 - Ordenar valores" se pode usar o "método bolha" 
+ */
 public class Uni6Exe10 {
+    public static void main(String[] args) {
 
-    static final int MAX_SIZE = 50; 
-    static int[] vetor = new int[MAX_SIZE];
-    static int tamanhoAtual = 0; 
-
-    public static void incluirValor() {
-        if (tamanhoAtual < MAX_SIZE) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Digite o valor a ser incluído: ");
-            int valor = scanner.nextInt();
-            vetor[tamanhoAtual] = valor;
-            tamanhoAtual++;
-            System.out.println("Valor incluído com sucesso!");
-        } else {
-            System.out.println("Vetor cheio. Não é possível incluir mais valores.");
-        }
-    }
-
-    public static void pesquisarValor() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite o valor a ser pesquisado: ");
-        int valor = scanner.nextInt();
-
-        boolean encontrado = false;
-        for (int i = 0; i < tamanhoAtual; i++) {
-            if (vetor[i] == valor) {
-                encontrado = true;
-                break;
-            }
-        }
-
-        if (encontrado) {
-            System.out.println("Valor encontrado no vetor.");
-        } else {
-            System.out.println("Valor não encontrado.");
-        }
-    }
-
-    public static void alterarValor() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite o valor a ser alterado: ");
-        int valorAntigo = scanner.nextInt();
-        System.out.print("Digite o novo valor: ");
-        int novoValor = scanner.nextInt();
-
-        boolean alterado = false;
-        for (int i = 0; i < tamanhoAtual; i++) {
-            if (vetor[i] == valorAntigo) {
-                vetor[i] = novoValor;
-                alterado = true;
-                break;
-            }
-        }
-
-        if (alterado) {
-            System.out.println("Valor alterado com sucesso.");
-        } else {
-            System.out.println("Número não encontrado.");
-        }
-    }
-
-    public static void excluirValor() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite o valor a ser excluído: ");
-        int valor = scanner.nextInt();
-
-        boolean excluido = false;
-        for (int i = 0; i < tamanhoAtual; i++) {
-            if (vetor[i] == valor) {
-                for (int j = i; j < tamanhoAtual - 1; j++) {
-                    vetor[j] = vetor[j + 1];
-                }
-                tamanhoAtual--;
-                excluido = true;
-                break;
-            }
-        }
-
-        if (excluido) {
-            System.out.println("Valor excluído com sucesso.");
-        } else {
-            System.out.println("Valor não encontrado.");
-        }
-    }
-
-    public static void mostrarValores() {
-        if (tamanhoAtual == 0) {
-            System.out.println("Vetor vazio.");
-            return;
-        }
-
-        System.out.print("Valores no vetor: ");
-        for (int i = 0; i < tamanhoAtual; i++) {
-            System.out.print(vetor[i] + " ");
-        }
-        System.out.println();
-    }
-
-    public static void ordenarValores() {
-        for (int i = 0; i < tamanhoAtual - 1; i++) {
-            for (int j = 0; j < tamanhoAtual - i - 1; j++) {
-                if (vetor[j] > vetor[j + 1]) {
-                    int temp = vetor[j];
-                    vetor[j] = vetor[j + 1];
-                    vetor[j + 1] = temp;
-                }
-            }
-        }
-        System.out.println("Valores ordenados.");
-    }
-
-    public static void inverterValores() {
-        int inicio = 0;
-        int fim = tamanhoAtual - 1;
-        while (inicio < fim) {
-            int temp = vetor[inicio];
-            vetor[inicio] = vetor[fim];
-            vetor[fim] = temp;
-            inicio++;
-            fim--;
-        }
-        System.out.println("Valores invertidos.");
-    }
-
-    public static void exibirMenu() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner teclado = new Scanner(System.in);
+        int vet[] = new int[50];
+        int posFim = 0; // posição no início ou topo do vetor
         int opcao;
-
         do {
-            System.out.println("\nMenu:");
-            System.out.println("1 – Incluir valor");
-            System.out.println("2 – Pesquisar valor");
-            System.out.println("3 – Alterar valor");
-            System.out.println("4 – Excluir valor");
-            System.out.println("5 – Mostrar valores");
-            System.out.println("6 – Ordenar valores");
-            System.out.println("7 – Inverter valores");
-            System.out.println("8 – Sair do sistema");
-            System.out.print("Escolha uma opção: ");
-            opcao = scanner.nextInt();
-
+            System.out.println(" ________ MENU ________");
+            System.out.println("  1 - Incluir valor");
+            System.out.println("  2 - Pesquisar valor");
+            System.out.println("  3 - Alterar valor");
+            System.out.println("  4 - Excluir valor");
+            System.out.println("  5 - Mostrar valores");
+            System.out.println("  6 - Ordenar valores");
+            System.out.println("  7 - Inverter valores");
+            System.out.println("  8 - Sair do sistema");
+            System.out.print(" Opção: ");
+            opcao = teclado.nextInt();
             switch (opcao) {
-                case 1:
-                    incluirValor();
+                case 1: // Incluir valor
+                    if (posFim < vet.length) {
+                        System.out.print(" valor: ");
+                        vet[posFim] = teclado.nextInt();
+                        System.out.println("_ incluído em vet[" + posFim + "].");
+                        posFim++;
+                    } else {
+                        System.out.println(" .. não incluído - vetor cheio .. ");
+                    }
                     break;
-                case 2:
-                    pesquisarValor();
+
+                case 2: // Pesquisar valor
+                    System.out.print(" valor pesquisa: ");
+                    int valorPesquisa = teclado.nextInt();
+                    boolean encontrado = false;
+
+                    for (int i = 0; i < posFim; i++) {
+                        if (valorPesquisa == vet[i]) {
+                            System.out.println("_ encontrado vet[" + i + "]");
+                            encontrado = true;
+                            break;
+                        }
+                    }
+
+                    if (!encontrado) {
+                        System.out.println("_ Não encontrado.");
+                    }
                     break;
-                case 3:
-                    alterarValor();
+
+                case 3: // Alterar valor
+                    System.out.print(" valor para alterar: ");
+                    int valorPesquisaAlterar = teclado.nextInt();
+                    boolean encontradoAlterar = false;
+                    int posicaoEncontradaAlterar = -1;
+
+                    for (int i = 0; i < posFim; i++) {
+                        if (valorPesquisaAlterar == vet[i]) {
+                            System.out.println("_ encontrado vet[" + i + "]");
+                            encontradoAlterar = true;
+                            posicaoEncontradaAlterar = i;
+                            break;
+                        }
+                    }
+
+                    if (!encontradoAlterar) {
+                        System.out.println("_ Não encontrado.");
+                    } else {
+                        System.out.print(" valor troca: ");
+                        vet[posicaoEncontradaAlterar] = teclado.nextInt();
+                        System.out.println("_ valor troca vet[" + posicaoEncontradaAlterar + "]: "
+                                + vet[posicaoEncontradaAlterar]);
+                    }
                     break;
-                case 4:
-                    excluirValor();
+
+                case 4: // Excluir valor
+                    System.out.print(" valor pesquisa: ");
+                    int valorPesquisaExcluir = teclado.nextInt();
+                    boolean encontradoExcluir = false;
+                    int posicaoEncontradaExcluir = -1;
+
+                    for (int i = 0; i < posFim; i++) {
+                        if (valorPesquisaExcluir == vet[i]) {
+                            System.out.println("_ encontrado vet[" + i + "]");
+                            encontradoExcluir = true;
+                            posicaoEncontradaExcluir = i;
+                            break;
+                        }
+                    }
+
+                    if (!encontradoExcluir) {
+                        System.out.println("_ Não encontrado.");
+                    } else {
+                        for (int i = posicaoEncontradaExcluir; i < (posFim - 1); i++) {
+                            vet[i] = vet[i + 1];
+                        }
+                        posFim--;
+                        System.out.println("_ valor excluído.");
+                    }
                     break;
-                case 5:
-                    mostrarValores();
+
+                case 5: // Mostrar valores
+                    System.out.println(" ** vetor valores ** ");
+                    for (int i = 0; i < posFim; i++) {
+                        System.out.println("vet[" + i + "] " + vet[i]);
+                    }
                     break;
-                case 6:
-                    ordenarValores();
+
+                case 6: // Ordenar valores
+                    // Loop externo para controlar as passagens pelo array
+                    for (int idx = 0; idx < posFim - 1; idx++) {
+                        // Loop interno para comparações e trocas
+                        for (int j = 0; j < posFim - idx - 1; j++) {
+                            // Se o elemento atual for maior que o próximo elemento
+                            if (vet[j] > vet[j + 1]) {
+                                // Troca os elementos
+                                int temp = vet[j];
+                                vet[j] = vet[j + 1];
+                                vet[j + 1] = temp;
+                            }
+                        }
+                    }
+                    System.out.println("_ valores ordenados.");
                     break;
-                case 7:
-                    inverterValores();
+
+                case 7: // Inverter valores
+                    int temp = 0;
+                    // Loop externo para controlar as passagens pelo array
+                    for (int i = 0; i < posFim; i++) {
+                        // Loop interno para as trocas
+                        for (int x = 0; x < i; x++) {
+                            // Troca os elementos
+                            temp = vet[i];
+                            vet[i] = vet[x];
+                            vet[x] = temp;
+                        }
+                    }
+                    System.out.println("_ valores invertidos.");
                     break;
+
                 case 8:
-                    System.out.println("Saindo do sistema...");
+                    System.out.println(" ** FIM ** ");
                     break;
+
                 default:
-                    System.out.println("Opção inválida.");
+                    System.out.println(" .. opção inválida .. ");
+                    break;
             }
         } while (opcao != 8);
-    }
 
-    public static void main(String[] args) {
-        exibirMenu();
+        teclado.close();
     }
 }

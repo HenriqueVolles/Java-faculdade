@@ -20,6 +20,3 @@ public class Uni5Exe01 {
         scanner.close();
     }
 }
- {
-    
-}

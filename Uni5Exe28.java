@@ -1,3 +1,11 @@
+//Uma emissora de rádio decidiu promover uma eleição para determinar o melhor conjunto do ano segundo a opinião dos ouvintes. Entraram na disputa apenas os quatro conjuntos mais solicitados durante o ano. Os votos são informados através de códigos:
+//Descreva um algoritmo que:
+
+//informar o total de votos para cada grupo;
+//informar o percentual dos votos para cada grupo;
+//informe o grupo vencedor.
+//O algoritmo deve apresentar ao usuário a seguinte mensagem: mais um voto: s (SIM) / n (NÃO)? antes da obrigação com a entrada de dados.
+
 import java.util.Scanner;
 
 public class Uni5Exe28 {

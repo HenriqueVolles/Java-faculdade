@@ -1,3 +1,6 @@
+//Descreva um algoritmo que leia a altura de 20 pessoas e calcule a média de altura das mesmas.
+
+
 import java.util.Scanner;
 
 public class Uni5Exe06 {

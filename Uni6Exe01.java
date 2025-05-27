@@ -1,3 +1,5 @@
+//Descreva um algoritmo que leia 10 números inteiros e os coloque em um vetor de 10 posições do tipo inteiro. Escreva na ordem inversa em que foram lidas. Faça um método para ler e outro para escrever. OBSERVAÇÃO: Não utilize o Arrays.sort
+
 import java.util.Scanner;
 
 public class Uni6Exe01 {

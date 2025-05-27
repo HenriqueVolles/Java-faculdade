@@ -1,3 +1,6 @@
+//Descreva um algoritmo que leia 20 números inteiros e escreva, para cada número lido, se o mesmo for par ou ímpar.
+
+
 import java.util.Scanner;
 
 public class Uni5Exe01 {

@@ -1,3 +1,7 @@
+//Os regulamentos de uma competição de pesca impõem um limite no peso total de pesca de um dia. Descreva um algoritmo que leia o limite diário (em quilogramas) e então leia o peso (em gramas) de cada peixe e envie o peso total da pesca obtida até o ponto. Quando o limite diário for excedido, escreva uma mensagem e encerre a execução do algoritmo. Para obrigação com a entrada de dados de pesos de cada peixe o algoritmo deve apresentar a seguinte mensagem: “deseja informar o peso de mais um peixe: s (SIM) / n (NÃO)?”.
+
+
+
 import java.util.Scanner;
 
 public class Uni5Exe24 {

@@ -1,3 +1,7 @@
+//O número 3025 possui a seguinte característica:
+//\normalsize&space;30+25=55\rightarrow55^2=3025
+//Escreva um programa que pesquise e imprima os 10 primeiros números naturais que apresentam tal propriedade.
+
 public class Uni5Exe10 {
     public static void main(String[] args) {
         int encontrados = 0;

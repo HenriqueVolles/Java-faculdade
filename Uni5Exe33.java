@@ -1,3 +1,16 @@
+//Em uma eleição para presidência, existem 4 candidatos. Os votos são informados através de código. Os dados utilizados para votação obedecem à seguinte decisão:
+
+//1, 2, 3, 4 = voto para o candidato correspondente;
+//5 = voto nulo;
+//6 = voto em branco.
+//Elabore um programa que calcula e escreve:
+
+//total de votos para cada candidato;
+//total de votos nulos;
+//total de votos em branco;
+//percentual de votos em branco e nulos sobre o total.
+//Se o usuário informar um número de operação incorreto, emitirá uma mensagem “Opção incorreta” e persistirá solicitando um número de opção correta. Para interromper a operação, o usuário poderá fornecer o número 0.
+
 import java.util.Scanner;
 
 public class Uni5Exe33 {

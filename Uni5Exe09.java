@@ -1,3 +1,8 @@
+//Uma turma tem em alunos. Dado n , o nome e idade de cada aluno descreva um algoritmo que:
+//escreva os nomes dos alunos que têm 18 anos;
+//escreva a quantidade de alunos que têm idade acima de 20 anos.
+
+
 import java.util.Scanner;
 
 public class Uni5Exe09 {

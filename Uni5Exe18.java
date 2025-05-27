@@ -1,3 +1,5 @@
+//Foi feita uma pesquisa de audiência de canal de TV em casas de um determinado bairro de uma cidade, em um certo dia do mês. Na pesquisa foi utilizado um coletor de dados portátil. Para cada casa visitada, foi fornecido o número do canal (4, 5, 9, 12) e o número de pessoas que assistiram à TV naquele horário, considerando que em cada casa só existia uma televisão. Nas casas onde a televisão estava desligada, foi registrado zero para o número do canal e para o número de pessoas. Baseado nisto descreva um algoritmo que calcula e escreve, para cada emissora, o percentual de audiência. A leitura deve ser finalizada quando for informado o canal 0.
+
 import java.util.Scanner;
 
 public class Uni5Exe18 {

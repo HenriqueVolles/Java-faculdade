@@ -1,3 +1,5 @@
+//Um funcionário recebe aumento anual. Em 1995 foi contratado por 2.000 reais. Em 1996 recebeu um aumento de 1,5%. A partir de 1997, os aumentos sempre exigem ao dobro do ano anterior. Faça um programa que determine o salário atual do funcionário.
+
 import java.util.Scanner;
 
 public class Uni5Exe22 {

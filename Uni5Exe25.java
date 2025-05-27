@@ -1,3 +1,8 @@
+//Em uma disputa de pingue-pongue os pontos são anotados como D , ponto para o jogador do lado direito, e E , ponto para o jogador do lado esquerdo da mesa. Descreva um algoritmo que leia o código do ponto de cada jogo e determine o vencedor. A partida encerra quando:
+
+um dos jogadores chegar a 21 pontos e a diferença de pontos entre os jogadores para maior ou igual a dois;
+o jogador com mais de 21 pontos consegue uma diferença de dois pontos sobre o oponente, caso a primeira condição não seja atendida.
+
 import java.util.Scanner;
 
 public class Uni5Exe25 {

@@ -1,3 +1,5 @@
+//Descreva um algoritmo que calcula e escreve a soma dos números pares e a soma dos números ímpares entre 1 e 100.
+
 public class Uni5Exe02 {
     public static void main(String[] args) {
         int somaPares = 0;

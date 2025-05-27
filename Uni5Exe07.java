@@ -1,3 +1,5 @@
+//Descreva um algoritmo que leia um número inteiro n e, dados n números reais informe o maior e o menor número.
+
 import java.util.Scanner;
 
 public class Uni5Exe07 {

@@ -1,3 +1,8 @@
+//Faça um programa que leia um valor N inteiro. Com base neste valor, crie um vetor do tipo real. Em seguida, solicite ao usuário que informe essa quantidade N de valores reais para popular ou vetor. Após ter preenchido o vetor, solicite que o usuário informe um outro valor real. Informe ao usuário se este valor informado se encontra cadastrado no vetor. Faça um método para ler o vetor e outro, que retorne verdadeiro ou falso, para encontrar o valor.
+
+
+
+
 import java.util.Scanner;
 
 public class Uni6Exe06 {

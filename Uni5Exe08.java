@@ -1,3 +1,9 @@
+//Descreva um algoritmo que leia um número inteiro n e, dados n números inteiros, descreva um algoritmo que:
+
+//escreva o menor valor negativo;
+//escreva para a média dos números positivos.
+
+
 import java.util.Scanner;
 
 public class Uni5Exe08 {

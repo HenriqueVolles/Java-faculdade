@@ -1,3 +1,5 @@
+//Dado um número inteiro positivo, determine a sua experiência em fatores primos. A saída do programa deve ser semelhante ao exemplo abaixo:
+
 import java.util.Scanner;
 public class Uni5Exe31 {
 	public static void main(String[] args) {

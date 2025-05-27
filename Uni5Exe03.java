@@ -1,3 +1,5 @@
+//Descreva um algoritmo que calcula e escreva a soma da seguinte série de 100 termos:
+
 public class Uni5Exe03 {
   public static void main(String[] args) {
     double soma = 0;
